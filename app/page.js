@@ -7,7 +7,9 @@ import AboutUs from "./components/AboutUs";
 import Achivements from "./components/Achivements";
 import Reviews from "./components/Reviews";
 import Happy from "./components/Happy";
-
+import Department from './components/Department'
+import Image from "next/image";
+import Footer from "./components/Footer";
 const page = () => {
   return (
     <>
@@ -35,7 +37,15 @@ const page = () => {
       <Reviews/>
      </div>
      <div>
-      <Happy/>
+     <div className="flex justify-center">
+      <Image src="/img2.png" alt="img2" width={1350} height={200}/>
+    </div>
+     </div>
+     <div>
+      <Department/>
+     </div>
+     <div>
+      <Footer/>
      </div>
     </div>
     
