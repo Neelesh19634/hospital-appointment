@@ -46,13 +46,4 @@ export async function POST(req) {
 }
 
 
-export async function GET(req) {
-  await mongoose.connect(URL);
-  const data=await req.json();
 
-  const{userId}=data;
-
-  const appointments=await appointmentModel.find({userId:userId});
-  return NextResponse.json({appointments})
-
-}

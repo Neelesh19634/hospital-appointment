@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <div className="bg-blue-50 ">
       <Head>
-        <title>ProHealth</title>
+        <title>Phantom</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
           rel="stylesheet"
@@ -42,11 +42,13 @@ const Header = () => {
           <a className="hover:text-gray-900" href="/">
             Home
           </a>
-          <a className="hover:text-gray-900" href="#">
-            About
-          </a>
+         
           <a className="hover:text-gray-900" href="/Contact">
             Contact
+          </a>
+
+          <a className="hover:text-gray-900" href="/AllAppointment">
+            MyAppointment
           </a>
 
           <SignInButton>

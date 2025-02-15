@@ -1,9 +1,11 @@
 "use client"
 import { Ambulance, ArrowRight, MapPin, Phone } from "lucide-react";
 import Head from "next/head";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const CommonInfo = () => {
+  const router=useRouter();
   return (
     <div className="relative bg-blue-50 flex items-center justify-center">
     <Head>
@@ -40,7 +42,9 @@ const CommonInfo = () => {
         </div>
       </div>
       <div>
-        <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition duration-300 hover:scale-[1.2] flex items-center">
+        <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition duration-300 hover:scale-[1.2] flex items-center" onClick={()=>{
+          router.push("/Appointment");
+        }}>
           Book Now <ArrowRight className="ml-2" />
         </button>
       </div>
