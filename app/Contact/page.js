@@ -1,8 +1,59 @@
 "use client";
 
-import React from "react";
+import { Loader } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 const ContactForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] =useState({
+    name:"",
+    email:"",
+    phone:"",
+    message:""
+  })
+
+  const handleChange=(e)=>{
+    let name=e.target.name;
+    let value=e.target.value;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await fetch("/api/Contacts", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const responseData = await res.json(); 
+  
+      if (res.ok) {
+        console.log(responseData);
+        alert("Form submitted successfully");
+        setData({ name: "", email: "", phone: "", message: "" }); // Clear form after submission
+      } else {
+        alert(responseData.message || "Network error"); // Show API error message if available
+      }
+    } catch (error) {
+      alert("Error submitting form");
+      console.error("Form submission error:", error);
+    }finally{
+      setLoading(false);
+    }
+  };
+  
+
+  useEffect(()=>{
+    console.log(data);
+  },[data])
   return (
     <section className="bg-gray-50 py-16 h-screen flex items-center">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -21,7 +72,7 @@ const ContactForm = () => {
           </div>
 
           <div className="lg:col-span-3 bg-white p-8 rounded-xl shadow-2xl">
-            <form action="#" className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="sr-only" htmlFor="name">Name</label>
                 <input
@@ -29,6 +80,9 @@ const ContactForm = () => {
                   placeholder="Your Name"
                   type="text"
                   id="name"
+                  name="name"
+                  value={data.name}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -40,6 +94,9 @@ const ContactForm = () => {
                     placeholder="Your Email"
                     type="email"
                     id="email"
+                    name="email"
+                    value={data.email}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
@@ -49,6 +106,9 @@ const ContactForm = () => {
                     placeholder="Your Phone"
                     type="tel"
                     id="phone"
+                    name="phone"
+                    value={data.phone}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -61,15 +121,24 @@ const ContactForm = () => {
                   placeholder="Your Message"
                   rows="6"
                   id="message"
+                  name="message"
+                  value={data.message}
+                  onChange={handleChange}
                 ></textarea>
               </div>
 
               <div>
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-full rounded-lg bg-pink-600 px-6 py-3 text-lg font-semibold text-white transition hover:bg-pink-700 sm:w-auto"
                 >
-                  Send Enquiry
+                {
+                  loading?(<p className="transition animate-spin"><Loader/></p>):(
+                    <p> Send Enquiry</p>
+                  )
+                }
+                 
                 </button>
               </div>
             </form>
