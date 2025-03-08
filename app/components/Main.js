@@ -2,18 +2,12 @@
 import { PlayCircle } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
-import { FaPlayCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 // Animation variants for reusable animations
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
-};
-
-const scaleUp = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 1, ease: "easeOut" } },
 };
 
 const staggerContainer = {
@@ -55,11 +49,11 @@ const Main = () => {
       </motion.div>
 
       {/* Right Image Section */}
-      <motion.div variants={fadeInUp} className="w-full md:w-1/2 flex justify-center items-center relative mt-8 md:mt-0 mr-16">
-        {/* Female Doctor Image */}
+      <motion.div variants={fadeInUp} className="w-full md:w-1/2 flex justify-center items-center relative mt-8 md:mt-0 md:mr-16">
+        {/* Female Doctor Image - Centered and Larger on Small Screens */}
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="relative w-44 h-60 md:w-52 md:h-72 lg:w-60 lg:h-80"
+          className="relative w-60 h-80 sm:w-72 sm:h-96 md:w-52 md:h-72 lg:w-60 lg:h-80 flex justify-center"
         >
           <Image
             src="https://storage.googleapis.com/a1aa/image/VlSZ6sFtAFkgRPUnp8PrbH4mFIlAwjnZvENjiv3DHMU.jpg"
@@ -70,24 +64,24 @@ const Main = () => {
           />
         </motion.div>
 
-        {/* Male Doctor Image - Adjusted Position */}
+        {/* Male Doctor Image - Hidden on Small Screens */}
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="absolute right-4 bottom-4 w-40 h-56 md:w-48 md:h-64 lg:w-56 lg:h-72"
+          className="absolute right-4 bottom-4 w-40 h-56 md:w-48 md:h-64 lg:w-56 lg:h-72 hidden md:block"
         >
           <Image
             src="https://storage.googleapis.com/a1aa/image/s6xr8fmpqvENwh_UVRS_qfpnsGqGBU95RsBxylFT61E.jpg"
             alt="Male doctor smiling"
             layout="fill"
             objectFit="cover"
-            className="rounded-lg shadow-lg md:mt-32 md:m"
+            className="rounded-lg shadow-lg"
           />
         </motion.div>
 
         {/* Patient Recover Stats */}
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="absolute bottom-6 md:right-[60%] flex items-center space-x-2 bg-white rounded-lg p-4 shadow-lg"
+          className="absolute bottom-3 md:bottom-6 md:right-[60%] flex items-center space-x-2 bg-white rounded-lg p-4 shadow-lg"
         >
           <Image src="https://storage.googleapis.com/a1aa/image/csVcd1Na9VBKhT64FnvanPXrETsZPQPegIahlb6Y6gI.jpg" alt="Patient 1" width={32} height={32} className="w-10 h-10 rounded-full" />
           <Image src="https://storage.googleapis.com/a1aa/image/uOIVOgFTI-kQd5DtsmBTB5EWvic8j5LOVL0s5DoSd_4.jpg" alt="Patient 2" width={32} height={32} className="w-10 h-10 rounded-full" />
@@ -98,10 +92,10 @@ const Main = () => {
           </div>
         </motion.div>
 
-        {/* Doctor Count Stats */}
+        {/* Doctor Count Stats - Hidden on Small Screens */}
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="absolute top-16 right-8 bg-white p-3 rounded-lg shadow-md text-center w-24 md:w-20 md:py-4"
+          className="absolute top-16 right-8 bg-white p-3 rounded-lg shadow-md text-center w-24 md:w-20 md:py-4 hidden md:block"
         >
           <Image src="https://storage.googleapis.com/a1aa/image/lStIcRIsbu_JgU8O6puRhan9X6qgWLcYrIMmP9CH838.jpg" alt="Doctor icon" width={32} height={32} className="w-8 h-8 rounded-full mx-auto" />
           <span className="block text-gray-800 font-bold text-sm md:text-base">870+</span>

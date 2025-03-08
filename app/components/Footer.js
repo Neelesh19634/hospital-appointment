@@ -2,6 +2,7 @@
 
 import { Facebook, Instagram, Twitter, Github, Dribbble } from "lucide-react";
 import { MapPin, Phone, Mail } from "lucide-react";
+
 const Footer = () => {
   return (
     <footer className="bg-white">
@@ -17,7 +18,7 @@ const Footer = () => {
                 Email
               </label>
               <input
-                className="w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium"
+                className="w-full rounded-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium"
                 id="email"
                 type="email"
                 placeholder="john@doe.com"
@@ -29,39 +30,38 @@ const Footer = () => {
           </form>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-8  place-items-center">
-          <div className="text-center ">
-            <div className="bg-white p-6 rounded-lg w-full max-w-full flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <MapPin className="text-blue-500" />
-                <span className="text-gray-700">
-                  123 Anywhere St., Any City 12345
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="text-blue-500" />
-                <span className="text-gray-700">123-456-7890</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="text-blue-500" />
-                <span className="text-gray-700">hellocallcenter@gmail.com</span>
-              </div>
+        <div className="mt-10 flex flex-col items-center space-y-6 text-center">
+          <div className="bg-white p-6 rounded-lg w-full max-w-lg flex flex-col sm:flex-row sm:items-center sm:justify-center sm:space-x-6 space-y-4 sm:space-y-0">
+            <div className="flex items-center space-x-2">
+              <MapPin className="text-blue-500" />
+              <span className="text-gray-700">
+                123 Anywhere St., Any City 12345
+              </span>
             </div>
-            <div className="mt-6 flex justify-center gap-4 ">
-              {[Facebook, Instagram, Twitter, Github, Dribbble].map(
-                (Icon, index) => (
-                  <a
-                    key={index}
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Icon className="w-6 h-6" />
-                  </a>
-                )
-              )}
+            <div className="flex items-center space-x-2">
+              <Phone className="text-blue-500" />
+              <span className="text-gray-700">123-456-7890</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <Mail className="text-blue-500" />
+              <span className="text-gray-700">hellocallcenter@gmail.com</span>
+            </div>
+          </div>
+
+          <div className="mt-4 flex justify-center gap-4">
+            {[Facebook, Instagram, Twitter, Github, Dribbble].map(
+              (Icon, index) => (
+                <a
+                  key={index}
+                  className="text-gray-700 transition hover:text-gray-700/75"
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon className="w-6 h-6" />
+                </a>
+              )
+            )}
           </div>
         </div>
       </div>
